@@ -1,0 +1,1397 @@
+<span id="refreshWrapper" style=display:none>
+
+    <script type="text/javascript">
+        jQuery(function($) {
+          for(var i=0; i <= 20; i++) 
+            $("ol li:nth-child(" + i + ")").addClass('olli' + i);
+        });
+      </script>
+    
+    <script>
+        var $ = window.CustomJQuery;
+$( "#accordion" )
+  .accordion({ header: "> div > h3", heightStyle: 'content', collapsible: true})
+  .sortable({
+axis: "y",
+handle: "h3",
+stop: function( event, ui ) {
+ // IE doesn't register the blur when sorting
+ // so trigger focusout handlers to remove .ui-state-focus
+ ui.item.children( "h3" ).triggerHandler( "focusout" );
+
+ // Refresh accordion to handle new order
+ $( this ).accordion( "refresh" );
+}
+});
+
+//Resolves issue with Drop-down List Rendering
+function onOpenedCallback(analysisDocument)
+{
+// Modify property to trigger Spotfire script xyz
+analysisDocument.setDocumentProperty("abc", "");
+}
+
+$( "#accordion" ).accordion({active: false,collapsible: true,heightStyle: 'content'});
+
+
+$("#accordion").accordion( {heightStyle: 'content'} );
+
+// $( "#accordion" ).accordion( "option", "event", "click" );
+var event = $( "#accordion" ).accordion( "option", "event" );
+console.log("event = " + event.toString());
+
+//the refresh snippet
+$( "#accordion" ).on( "accordionactivate", function(event, ui) {
+console.log(event.toString());
+//$( "#accordion" ).accordion( "refresh" );
+//Document.Properties["abc"] = "";
+$("#refreshWrapper input").val(Math.random());
+$("#refreshWrapper input").focus();
+$("#refreshWrapper input").blur();
+//SpotfireDocument.setDocumentProperty("abc", "");
+} );
+
+    </script>
+
+
+
+<script src="./resources/JS/jQuery 3.3.1.js"></script>
+
+    <SpotfireControl id="5c4390a75b204bf6b555bfbf8c55c012" />
+    </span>
+    <!--En este style bloqueamos y desbloqueamos la cabecera-->
+    <style>
+    .EquifaxIgnite-header, EquifaxIgnite-headerBackground {
+      display: block;
+    }
+    </style>
+    
+    <!--Aca inicia la cabecera-->
+    
+    <style>
+    /*No cambiar colorF*/
+    #accordion .ui-accordion-header {
+    background-color: #212F3C;
+    margin: 5px;
+    }
+    
+    /*No cambiar color*/
+    #accordion  .ui-accordion-header:hover {
+        background-color: #1B2631;
+        color: #FFF;
+    }
+    
+    #accordion-properties{
+        border: hidden;
+        background: #000;
+        opacity: 1;
+    }
+    
+    
+    .ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: 100%; margin-left: -30px; top: 50%; margin-top: -8px; }
+    
+    /*No cambiar color*/
+    .sfc-style-root .sf-element-list-box.sfc-scrollable{
+        border-style: Solid;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-color: #D3D5D6;
+        border-right-color: #D3D5D6;
+        border-bottom-color: #D3D5D6;
+        border-left-color: #D3D5D6;
+        background-color: #FFF !important;
+    }
+    /*No cambiar color*/
+    .sfc-style-root .sf-element-list-box-item.sfpc-selected {
+        background-color: #000 !important;
+        border-top-color: #4F4F4F;
+        border-right-color: #4F4F4F;
+        border-bottom-color: #4F4F4F;
+        border-left-color: #4F4F4F;
+        color: #FFF !important;
+    }
+    </style>
+    
+    
+    <!--Css Navegación INICIO-->
+    <style>
+    .topnav {
+      overflow: hidden;
+    }
+    
+    .topnav a {
+      float: left;
+      display: block;
+      color: black;
+      text-align: center;
+      padding:5px 16px;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 3px solid transparent;
+    }
+    
+    /*aca se cambia el color de la linea de la pagina activa en cabecera*/
+    .topnav a.active {
+      border-bottom: 3px solid #1D7AB2;
+    }
+    
+    .topnav a:visited {
+      color: black;
+    }
+    
+    /*no cambiar color, el cursor pointer es la mano */
+    .topnav a:hover {
+     /*border-bottom: 3px solid #828282;*/
+      text-decoration: none;
+      color: #828282;
+      cursor: pointer;
+    }
+    
+    .lineaDivisoriaBotones {
+        width: 20%;
+        height: 100%;
+        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        position: absolute;
+        padding-left: 7%;
+    }
+    
+    </style>
+    <!--Css Navegación FIN-->
+    
+    
+    <!--Css Tooltip para botones descarga y borrar filtros INICIO-->
+    <style>
+    [data-tip] {
+    position:absolute;
+    
+    }
+    [data-tip]:before {
+    content:'';
+    /* hides the tooltip when not hovered */
+    display:none;
+    content:'';
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #1a1a1a;
+    position:absolute;
+    top:30px;
+    right:0px;
+    z-index:8;
+    font-size:12px;
+    line-height:0;
+    width:0;
+    height:0;
+    }
+    [data-tip]:after {
+    display:none;
+    content:attr(data-tip);
+    position:absolute;
+    top:35px;
+    right:0px;
+    padding:5px 8px;
+    background:#1a1a1a;
+    color:#fff;
+    z-index:9;
+    font-size: 12px;
+    height:18px;
+    line-height:18px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    white-space:nowrap;
+    word-wrap:normal;
+    }
+    [data-tip]:hover:before,
+    [data-tip]:hover:after {
+    display:block;
+    }
+    </style>
+    <!--Css Tooltip para botones descarga y borrar filtros FIN-->
+    
+    
+    
+    <!-- OJO! JS Dejar solo este
+    Hay varias versiones en este en las cabeceras … usar solo este: this is to overwrite the jquery ui default properties of the accordion ONLY -->
+    <style>
+      .ui-accordion-content { background-color: rgba(255,255,255,0); border: hidden; }
+      .ui-accordion-content { background-image: none; }
+      .ui-accordion-header { background-color: #333e48; }
+      .ui-accordion .ui-accordion-header {padding: .25em .25em .25em .35em;}
+      .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 0px solid #110111; background: #f00;  }
+      .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 0px solid #110111; background: #000000; color: #fff;}
+    
+    </style>
+    
+    
+    <!-- CSS posición y formato logo INICIO-->
+    <style>
+      /*INICIO DE LOGO Y CONTENEDOR */
+    .verticalCenterOuter {
+      height: 100%;
+    }Pro
+    
+    .verticalCenterOuter:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+    
+    .verticalCenterInner {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    
+    
+    
+    .EquifaxIgnite-header {
+      font-family:"Open Sans";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      z-index: 995;
+    }
+    
+    .EquifaxIgnite-headerBackground {
+      background-color: #212F3C;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .EquifaxIgnite-headerBackground {
+        height: 37px;
+      }
+    }
+    
+    .igniteFill {
+      fill: #FFFFFF;
+    }
+    
+    .EquifaxIgnite-logo {
+      position: fixed;
+      display: block;
+      float: left;
+      top: 0;
+      left: 0;
+      width: 47%;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .EquifaxIgnite-logo {
+        left: 40px;
+        top:0px;
+      }
+    }
+    
+    .EquifaxIgnite-logoSpan {
+      color: #333e48;
+      fill: #333e48;
+      padding: 5px 10px 0px 10px;
+      display: block;
+      padding: 10;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .EquifaxIgnite-logoSpan {
+        padding: 5px 5px 0px 5px;
+      }
+    }
+    
+    .igniteLogo {
+      width: 214px;
+      height: 41px;
+    }
+    
+    
+    @media screen and (max-width: 668px) {
+      .igniteLogo {
+        width: 155px;
+        height: 25px;
+      }
+    }
+    
+    .outer-div {
+      position: relative;
+      float: right;
+      right: 50%;
+    }
+    
+    .inner-div {
+      position: relative;
+      float: right;
+      right: -50%;
+    }
+    
+    .EquifaxIgnite-headerTabsButton {
+      display:none;
+      position: fixed;
+      margin-top: 28px;
+      cursor: pointer;
+      background-color: #ededed;
+      width: 36px;
+      height: 16px;
+      padding: 2px 5px 4px 5px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      stroke: #333e48;
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .EquifaxIgnite-headerTabsButton {
+        right: 0px;
+        margin: 3px;
+        height: 21px;
+        padding: 6px 5px 4px 5px;
+        border-radius: 5px;
+      }
+    }
+    
+    .EquifaxIgnite-headerTabsButton:hover {
+      background-color: #333e48;
+      stroke: #fff;
+    }
+    
+    .arrowButton {
+      fill: none;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+    }
+    
+    .EquifaxIgnite-headerAppName {
+      color: #BDBDBD;
+      position: fixed;
+      float: right;
+      right: 0;
+      margin: 0;
+      padding: 12px 10px 0px 10px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .EquifaxIgnite-headerAppName {
+        position: absolute;
+        float: right;
+        right: 0;
+        margin: 0;
+        color: #BDBDBD;
+        width: 18f0px;
+        height: 20px;
+        top : 12px;
+        font-size: 12.75px;
+        font-weight: 400;
+        padding: 0;
+    
+      }
+    }
+    
+    /*FIN DE LOGO Y CONTENEDOR */
+    
+    /* Css HEADER-generic*/
+    /* ************************************************************************************************* */
+    /* ************************************************************************************************* */
+    /* ************************************************************************************************* */
+    /* Las clases se llaman hamburger pero corresponden al nuevo menu de cuadros */
+    /*No tocar configuracion en este primer tramo*/
+    /* INICIO HAMBURGER */
+    
+    .EquifaxIgnite-hamburger {
+      margin: 0;
+      padding: 0px 3px 0px 0px;
+      position: fixed;
+      float: left;
+      top: 52px;
+      left: 5px;
+      text-align: center;
+      z-index: 996;
+      background-color: #F2F2F2;
+      text-align: center;
+      border-radius: 4px;
+      -webkit-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .EquifaxIgnite-hamburger {
+        top: 5px;
+        padding: 1px 4px 2px 0px;
+       background-color: #000000;
+      }
+    }
+    
+    .hamburger .hamburgerLine {
+      width: 22px;
+      height: 3px;
+      border-radius: 20px;
+      background-color: #000000;
+      display: block;
+      margin: 3px auto;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .hamburger .hamburgerLine {
+        width: 25px;
+        height: 3px;
+        margin: 4px auto;
+        background-color: #FFF;
+      }
+    }
+    
+    .hamburger:hover {
+      cursor: pointer;
+    }
+    
+    #filterHamburger.is-active .hamburgerLine:nth-child(2) {
+      opacity: 0;
+    }
+    
+    #filterHamburger.is-active .hamburgerLine:nth-child(1) {
+      -webkit-transform: translateY(6px) rotate(45deg);
+      transform: translateY(6px) rotate(45deg);
+    }
+    
+    @media screen and (max-width: 668px) {
+      #filterHamburger.is-active .hamburgerLine:nth-child(1) {
+        -webkit-transform: translateY(7px) rotate(45deg);
+        transform: translateY(7px) rotate(45deg);
+      }
+    }
+    
+    #filterHamburger.is-active .hamburgerLine:nth-child(3) {
+      -webkit-transform: translateY(-6px) rotate(-45deg);
+      transform: translateY(-6px) rotate(-45deg);
+    }
+    
+    @media screen and (max-width: 668px) {
+      #filterHamburger.is-active .hamburgerLine:nth-child(3) {
+        -webkit-transform: translateY(-7px) rotate(-45deg);
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+    
+    
+    /* Cierra HAMBURGER */
+    /* ************************************************************************************************* */
+    /* ************************************************************************************************* */
+    /* ************************************************************************************************* */
+    
+    /* Css FILTERS */
+    /*No tocar configuracion en este tramo*/
+    /* Inicio FILTERS */
+    
+    
+    .filterTabContainer {
+      position: fixed;
+      background-color: #212F3C;
+      opacity: 0.9;
+      top: 70px;
+      width: 20%;
+      height: 80%;
+      padding: 34px 10px 15px 10px;
+      border-bottom-style: solid;
+      border-right-style: solid;
+      border-width: 2px;
+      border-color: #212F3C;
+      -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+      transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+      z-index: -1;
+      text-align: center;
+      vertical-align: top;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .filterTabContainer {
+        top: 69px;
+        width: 100%;
+        border-radius: 0;
+        padding: 10px 10px 15px 10px;
+      }
+    }
+    
+    @media screen and (max-width: 668px) {
+      .group {
+        width: 95%;
+      }
+    }
+    
+    .EquifaxIgnite_filterContainer {
+      display: inline-block;
+      margin: 0 auto;
+      font-family: "Open Sans";
+      vertical-align: top;
+    }
+    
+    .group > h3 {
+      font-size: 14px !important;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .group > h3 {
+        font-size: 12px !important;
+      }
+    }
+    
+    .EquifaxIgnite_filterCategory {
+      text-align: left;
+      color: #FFF;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 0 0 0;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .EquifaxIgnite_filterCategory {
+        font-size: 12px;
+      }
+    }
+    
+    .EquifaxIgnite_filterValue {
+      color: #FFF;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .EquifaxIgnite_filterValue {
+        font-size: 12px;
+      }
+    }
+    
+    .EquifaxIgnite_filterValueListBox {
+      color: #000;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .EquifaxIgnite_filterValueListBox {
+        font-size: 12px;
+      }
+    }
+    
+    /* Cierra FILTERS*/
+    /* ************************************************************************************************* */
+    /* ************************************************************************************************* */
+    /* ************************************************************************************************* */
+    /* Css NAVIGATION_TABS */
+    /*No tocar configuración en este tramo*/
+    /* Inicio NAVIGATION_TABS */
+    
+    
+    
+    #navigationTabButton {
+      -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+      transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    }
+    
+    #navigationTabButton.is-active {
+      -webkit-transform-origin: center center;
+              transform-origin: center center;
+      -webkit-transform: scaleY(-1);
+              transform: scaleY(-1);
+    }
+    
+     /* Para ocultar el menu de filtros, en margin cambiamos de 47px a 5px  */
+    .EquifaxIgnite-headerTabs {
+      background-color: #FBFCFC;
+      color: #333e48;
+      margin: 47px 0 0 0;
+      width: 100%;
+      border-bottom-style: solid;
+      border-width: 10px;
+      border-color: #F0F3F4;
+      overflow: auto;
+      max-height: 31px;
+      height: 40px;
+      padding: 1px 5px 0px 46px;
+      font-weight: 400;
+      -webkit-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+      z-index: 996;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .EquifaxIgnite-headerTabs {
+        margin-top: 36px;
+        padding: 0px 5px 2px 7px;
+        max-height: 1000px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+    }
+    /*#headerTabsContainer {
+      /* USE .EquifaxIgnite-headerTabs INSTEAD 
+    }*/
+
+    .EI-headerTab {
+      margin: 4px 1px 0px 1px;
+      float: left;
+      padding: 5px 11px 2px 11px;
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+      border-radius: 5px;
+      font-weight: 400;
+      font-size: 1.0em;
+    }
+    
+    .EI-headerTab3 {
+      position: fixed;
+      float: right;
+      padding: 3px 10px 0px 10px;
+      right: 0;
+      margin: 0;
+      border-radius: 20px !important;
+      font-weight: 200;
+      font-size: 1.0em;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .EI-headerTab {
+        width: 10%;
+        font-weight: 100;
+        padding:2px 6px 3px 6px;
+      }
+      .EI-headerTab3 {
+        position: fixed;
+        float: right;
+        padding:2px 6px 3px 6px;
+        right: 0;
+        margin: 0;
+        border-radius: 20px !important;
+        font-weight: 100;
+        font-size: 1.0em;
+      }
+     .EI-headerTab.is-active {
+        background-color: #FF3366;
+        color: #FFFFFF;
+        padding:3px 6px 2px 8px;
+     }
+    }
+    
+    
+    .EI-headerTab:hover {
+      background-color: #dadada;
+      color: #333e48;
+      cursor: pointer;
+    }
+    
+    @media screen and (max-width: 668px) {
+      .EI-headerTab:last-child {
+        margin-bottom: 5px;
+      }
+    }
+    
+    #navigationTabPropertyWrapper, .SFtabValue {
+      display: none;
+    }
+    
+    /* CIERRA NAVIGATION_TABS */
+    /* ************************************************************************************************* */
+    /* ************************************************************************************************* */
+    /* ************************************************************************************************* */
+    
+    /* Css HEADER_DIVIDER */
+    /*No tocar el color. Por default siempre sera border-color: #FBFCFC en todas las apps. no se cambia mas la línea de division*/
+    /* INICIO HEADER_DIVIDER */
+    
+    
+    .EquifaxIgnite-divider {
+      position: fixed;
+      float: left;
+      height: 1px;
+      width: 100%;
+      border: 0;
+      border-bottom-style: solid;
+      border-width: 2px;
+      border-color: #FBFCFC;
+      color: #fff;
+      top: 47px;
+    }
+    
+    
+    /* Cierra HEADER_DIVIDER */
+    /* ************************************************************************************************* */
+    /* ************************************************************************************************* */
+    /* ************************************************************************************************* */
+    /* Css SPOTFIRE */
+    /* No tocar.  Autoajusta para diferentes dispositivos  */
+    
+    @media screen and (max-width: 668px) {
+      .EquifaxIgnite-divider {
+        top: 36px;
+      }
+    }
+    
+    /* ********************************************************************* */
+    /* ********************************************************************* */
+    /* ********************************************************************* */
+    /* ********************************************************************* */
+    
+    /* HASTA ACA TENEMOS LOS STYLES DE LA CABECERA.  */
+    
+    </style>
+    
+    <!--Los Scripts internos-->
+    <!-- se mantienen igual que las versiones anteriores, hacen referencia a las funcionalidades de navegacion y ajustes -->
+    
+    
+    <script>
+    
+    //breakpoint (in px) where we transition from desktop to phone design
+    var break_phone = 668;
+    
+    // script to make spotfire links work
+    $('.EI-headerTab').on('click',function(){
+      $('#navigationTabPropertyWrapper input')
+      .val(this.querySelector('.SFtabValue').innerText).blur();
+    });
+    
+    // script to make the burger menu open and close
+    $(document).ready(function(){
+      $( "#filterTabContainer" ).hide();
+      $(".hamburger").click(function(){
+         $(this).toggleClass("is-active");
+        // document.getElementById("filterTabContainer").style.margin="0";
+        // console.log($(this).class)
+        $( "#filterTabContainer" ).toggle( "slide" );
+    
+        });
+    });
+    
+    //hide the navigation menu if the site loads in "phone mode"
+    $(document).ready(function(){
+      if( $(window).width() <= break_phone ) {
+        $("#headerTabsButton")[0].value="OFF";
+        $("#headerTabsContainer")[0].style.height = "0px";
+        $("#navigationTabButton").toggleClass("is-active");
+    
+      }
+    });
+    
+    
+    // script to toggle the tabs menu
+    function toggleNav() {
+    
+      //flip the button arrow up
+      $("#navigationTabButton").toggleClass("is-active");
+    
+      var navigation = document.getElementById("headerTabsButton");
+      var navigationTab = document.getElementById("headerTabsContainer").style;
+    
+      if(navigation.value==="OFF") {
+        // turn the nav menu on
+        navigation.value="ON";
+        if( $(window).width() > break_phone ) {
+          navigationTab.height = "27px"; //this should be auto, but then the animation will not work.
+          navigationTab.borderBottomWidth="2px";
+        } else {
+          navigationTab.height = "auto"; //expand navigation tab on phones
+          navigationTab.borderBottomWidth="2px";
+        }
+       
+        //turn background of the burger solid
+        // document.getElementsByClassName("EquifaxIgnite-hamburger")[0].style.backgroundColor="#A41F35";
+    
+        // make the hamburger white
+        // var yuuum = document.getElementsByClassName("hamburgerLine");
+        // for (var i = 0; i < yuuum.length; i++) {
+        //     yuuum[i].style.backgroundColor="#fff";
+        // }
+      }
+      else {
+        // turn the nav menu off
+        navigation.value="OFF";
+        navigationTab.height = "0px";
+        navigationTab.borderBottomWidth="0px";
+    
+        //turn background of the burger solid
+        // document.getElementsByClassName("EquifaxIgnite-hamburger")[0].style.backgroundColor="#eee";
+    
+        // make the hamburger dark
+        // var yuuum = document.getElementsByClassName("hamburgerLine");
+        // for (var i = 0; i < yuuum.length; i++) {
+        //     yuuum[i].style.backgroundColor="#A41F35";
+        // }
+      }
+    }
+    </script>
+    
+    <script>
+    //console.log('aaa');
+    
+    //$( document ).ready( function() {
+    //console.log('aaa');
+      // bug fix in Spotfire 7.10+ to make text filter width size > 0
+      fixSpotfireTextFilterWrapper();
+    //});
+     
+    // bug fix in Spotfire 7.10+ to make text filter width size > 0
+    // fixSpotfireTextFilter() has to be executed every time a text filter box becomes visible in the DOM
+    function fixSpotfireTextFilterWrapper() {
+      // in case there is an accordion somewhere on page,
+      // not inside the filter menu
+      fixSpotfireTextFilter();
+     
+      // fix the issue the first time user clicks on the burger (in case
+      // the first accordion tab contains a text filter
+      $('.EquifaxIgnite-hamburger').click( function(){
+        fixSpotfireTextFilter();
+      });
+     
+      // fix the issue every time the user clicks on another accordion
+      // header, so that each header has the text filter fixed.
+      // note: .group is the standard class used by jquery accordion that
+      // contains the accordion header
+      $('.group').click( function(){
+        fixSpotfireTextFilter();
+      });
+     
+      function fixSpotfireTextFilter() {
+        $('.sf-list-box-container').parent().each( function() {
+          Spotfire.Filters.TextFilter.update( this,"");
+        });
+      }
+    }
+    
+    </script>
+    
+    
+    <!-- "CLASS: EquifaxIgnite-header" -->
+    <div class="EquifaxIgnite-header" >
+      
+      
+        
+    <!--Imagen del Logo de EquifaxIgnite-->
+    
+        </span>
+      </div>
+      <div class="clearfix">
+        <div class="outer-div">
+          <div class="inner-div">
+            <div class="EquifaxIgnite-headerTabsButton" onclick="toggleNav();">
+            </div>
+          </div>
+        </div>
+    
+        <!--<div class="EquifaxIgnite-headerAppName">
+          <!-- ######################################### 
+          <!-- IGNITE: NAME OF THE APP HERE -->
+         
+        </div>
+      </div>
+      <div class="EquifaxIgnite-divider"></div>
+      <div class="EquifaxIgnite-hamburger">
+        <div class="verticalCenterOuter">
+          <div class="verticalCenterInner">
+            <div class="hamburger" id="filterHamburger">
+              <span>
+    <!--Imagen del menu-->
+    <img src="" style="border: 0; width: 23px; height: 23px;"/>
+      </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="headerTabsContainer" class="EquifaxIgnite-headerTabs">
+    
+    <!-- Navegacion de pestanas-->
+    <!-- Se utilizan los links para las pestanas. Los SpotfireControl id definidos en --Links a Pestanas-- se encuentran comentados para que en el id del tag definidos de <a> lo llame haciendo referencia. Esto funciona similar al boton de borrar filtros -->
+    
+    
+    <!-- Nombres de la pestanas. Aca copiamos los id de los links -->
+    
+    <div class="topnav">
+      <a class="active" id="">Informacion Demográfica</a>
+      <a id="86b8d6327c624a7d82f0e302fb3c245a" >Informacion de Mercado</a>
+     
+    <!-- Links a Pestañas -->
+    
+    <!--
+    <SpotfireControl id="86b8d6327c624a7d82f0e302fb3c245a" />
+    -->
+    
+    
+    <!-- ICONOS BORRAR FILTROS Y DESCARGAS-->
+    <!--Tenemos que tener el archivo para importar. Aca se cargan las imagenes como cuando traemos los iconos. La imagenes quedan comentadas y lo que hacemos es pegar el codigo de source (src) en la configuracion-->
+    
+    <!-- BORRAR FILTROS Y DESCARGAS-->
+    <!--Las funciones de borrar filtros y descargas son action controls. Lo que hacemos es configurar esa funcion en un comentario y despues pegamos el  texto id de la funcion-->
+    
+    <!--
+    <img src="6df776a54ded4c03bb81645dfaf6eb43.jpg" style="border: 0; width: 20px; height: 18px;"/> Borrar Filtros
+    <img src="15d57a7e84494f7e956414757fd50852.jpg" style="border: 0; width: 18px; height: 18px;"/>
+    <SpotfireControl id="1f33bedb5c3b44d5995b53557a31daad" />
+    <SpotfireControl id="b265fca0e82b4e129df19dff5a054ce9" />
+    -->
+    
+    <div class="EI-headerTab3" style="border-radius: 5px!">
+    
+    <!--Defino UserName -->
+    <DIV id=userID style ="display:none;"> </DIV>
+    <div style="margin-top: 8px;">
+    <SpotfireControl id="cced66932ce84f12ba440efa6b28ba8f" />
+    </div>
+    
+    
+    <div>
+    <!-- Linea Divisoria Vertical -->
+    <div class="lineaDivisoriaBotones" style= "right: 82%;top:5px"><div style="border-left: 1px solid grey;height: 20px; display: inline-block; margin-top:2px;"></div></div>
+    
+    <!-- Borrar filtros -->
+    <div data-tip="Borrar Filtros" style="right:130%;margin-top:-20px">
+    <input type="image" id="1f33bedb5c3b44d5995b53557a31daad" src="" style ="width: 20px; height: 20px;">
+    </div>
+    
+    <!-- Boton Descarga -->
+    <div data-tip="Descarga" style="right:110%;margin-top:-20px">
+    <input type="image" id="b265fca0e82b4e129df19dff5a054ce9" src="" style ="width: 20px; height: 20px;">
+    
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+      <div id="filterTabContainer" class="filterTabContainer">
+    <!-- ####################################################### -->
+    <!-- IGNITE: PLACE FILTERS BELOW, follow the general pattern  -->
+    
+    
+    
+    <div id="accordion">
+    
+    <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{font-family:Helvetica, sans-serif;font-size:14px; border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg th{font-size:14px;font-weight:normal;;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg .tg-zv4m{border-color:#fafafa;text-align:left;vertical-align:top}
+    .tg .tg-un49{font-weight:bold;font-size:11px;color:#043263;border-color:#fafafa;text-align:left;vertical-align:top}
+    .tg .tg-7lx0{font-weight:bold;font-size:12px;color:#060606;border-color:#fafafa;text-align:left;vertical-align:top}
+    </style>
+    
+    
+    
+    <!-- Económicos-->
+     <div class="group">
+        <h3 class="accordionHeader">Información Sociodemográfica</h3>
+    <div style="overflow-y:scroll; height:130px;"> <div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Edad</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="c29c557f1ad74d55a2bc0f1598c33f88" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Género</div>
+            <div class="EquifaxIgnite_filterValue">
+            <SpotfireControl id="9b07ea5419f749e09cad4f6bf3fc203c" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Generación</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="723cfd1b683b4f43b9632dde3e560191" />      
+    </div>
+    </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Estilo de vida</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="b9c6fd9e27bd4cd785b8c0f3cfb5d2c3" />      
+    </div>
+    </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Trabajador dependiente</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="aed1351c5b6543a68056ec2a7ba122a2" />
+    
+    </div>
+    </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Persona con negocio</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="7936c19fe2024b16b9c382ec4671f40a" />      
+    </div>
+    </div>
+       <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Grupo riqueza</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="6e2fb6444063486691c77c8da3d13cdf" />    
+    </div>
+    </div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- Georreferenciales -->
+      <div class="group">
+        <h3 class="accordionHeader">Información Geográfica</h3>
+    <div style="overflow-y:scroll; height:130px;"> <div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Departamento</div>
+            <div class="EquifaxIgnite_filterValueListBox">
+    <SpotfireControl id="e0616046bd274e6d8cb3e54507d6e1c5" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Provincia</div>
+            <div class="EquifaxIgnite_filterValueListBox">
+            <SpotfireControl id="7856292875be472086a833c603aae5e7" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Distrito</div>
+            <div class="EquifaxIgnite_filterValueListBox">
+    <SpotfireControl id="aeb61f99f27c475fbea61b97be399871" />
+    </div>
+    </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <!-- Económicos-->
+     <div class="group">
+        <h3 class="accordionHeader">Información Positiva</h3>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Tenencia de vehículos</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="e7f193f1f027455b97676de69e67c03e" />
+            </div>
+          </div>
+    </div>
+         
+    
+    
+    
+    <!-- Información de riesgo-->
+     <div class="group">
+        <h3 class="accordionHeader">Información de riesgo</h3>
+    <div style="overflow-y:scroll; height:130px;"> <div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Documentos en SICOM</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="1535fc14bdba4e1dabb481c778a22ae0" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Morosos vigentes</div>
+            <div class="EquifaxIgnite_filterValue">
+            <SpotfireControl id="b0f99e524f6e4b65bdbd89b7784831ce" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Score de Riesgo</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="9b432128801d4bbaa2b46e17f163aa82" />      
+    </div>
+    </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Morosos recurrentes</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="57d847edeea14201b42e8b4761c5ade0" />
+    </div>
+    </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Morosos no recurrentes</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="e0407b89156a47ab925bdee3ec1880a2" />
+    </div>
+    </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Nuevos morosos</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="23a95f3454bd4395bae7db3b83d06159" />      
+    </div>
+    </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Castigo vigente</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="61815237d2ea49a288844c57f8aca529" />      
+    </div>
+    </div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- Información crediticia -->
+     <div class="group">
+        <h3 class="accordionHeader">Información crediticia</h3>
+        <div style="overflow-y:scroll; height:150px;"> <div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Bancarizado</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="6181ea8480704fe99a171d422b323e60" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Crédito hipotecario</div>
+            <div class="EquifaxIgnite_filterValue">
+            <SpotfireControl id="9863d0a7f05b45fe9f72698002100490" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Crédito vehicular</div>
+            <div class="EquifaxIgnite_filterValue">
+            <SpotfireControl id="2e0f320167d345b0af8afe470bafc5dc" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Tarjeta de crédito</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="6fb6dad75c194778a717cbca287408df" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Crédito microfinanzas</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="7392314fb29846589042997d397d729c" />
+            </div>
+          </div>
+    <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Crédito entidades no reguladas</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="ea05cf9641de4db685ed51a0cd448c41" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    <!-- Información Contactabilidad -->
+     <div class="group">
+        <h3 class="accordionHeader">Información Contactabilidad</h3>
+        <div style="overflow-y:scroll; height:150px;"> <div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Celular</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="e5f86e58155f402992d038fef49a964c" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Teléfono fijo</div>
+            <div class="EquifaxIgnite_filterValue">
+            <SpotfireControl id="0519baf6d40f4a509c20869a1e5882b1" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">E-mail</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="b6e00a6cd5fd4782bbacc4bd1aa99da1" />
+            </div>
+          </div>
+    
+    <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Dirección</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="9f84396acfae42428dc6d45d8d6ac26a" />    
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- mejor direccion -->
+    <div class="group">
+        <h3 class="accordionHeader">Score mejor dirección</h3>
+        <div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory"></div>
+            <div class="EquifaxIgnite_filterValue">
+          <SpotfireControl id="71a5cb0ade8240c48cf26216aec318fc" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory"></div>
+            <div class="EquifaxIgnite_filterValue">
+             
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory"></div>
+            <div class="EquifaxIgnite_filterValue">
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- Información Covid -->
+     <div class="group">
+        <h3 class="accordionHeader">Indicadores COVID-19</h3>
+        <div style="overflow-y:scroll; height:150px;"> <div>
+          <div class="EquifaxIgnite_filterContainer">
+    <h3>Reprogramaciones</h3>
+     <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Reprogramado</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="2e25c50a928b4d319c34a44f3fdedb7a" />
+            </div>
+          </div>
+          <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Créditos reprogramados</div>
+            <div class="EquifaxIgnite_filterValue">
+            <SpotfireControl id="a77b8513891549888be5928de158adae" />
+            </div>
+          </div>
+         
+    <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Créditos pequeña empresa</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="27b4f86630d24f1eb4ceb8b2242a26c6" />    
+            </div>
+          </div>
+    <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Créditos micro empresa</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="14f1418ab84349c6a430c3fc00cd2d33" />    
+            </div>
+          </div>
+    <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Créditos consumo revol </div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="5fc1701aa4f04e93bc6189d9abd759de" />    
+            </div>
+          </div>
+    <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Créditos consumo no revol</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="139c2776a4d84212b6096a49aff2e83c" />    
+            </div>
+          </div>
+    <div class="EquifaxIgnite_filterContainer">
+            <div class="EquifaxIgnite_filterCategory">Créditos hipotecario</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="03561e42cd9141b89b721370ed9d8443" />
+            </div>
+          </div>
+    </div>
+    
+    
+    <h3>FAE-MyPe</h3>
+    <div class="EquifaxIgnite_filterContainer">
+     <div class="EquifaxIgnite_filterCategory">Con crédito</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="8bb7950dac2346398d7801c34723f9c7" />
+            </div>
+          </div>
+     <div class="EquifaxIgnite_filterContainer">
+     <div class="EquifaxIgnite_filterCategory">Cantidad de créditos</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="a03bc9cc2f3b4e47967392e9d7952d0d" />
+            </div>
+          </div>
+     
+    <div class="EquifaxIgnite_filterContainer">
+    <div class="EquifaxIgnite_filterCategory">Créditos pequeña empresa</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="19224b61973741e6a840077a885f7f50" />
+            </div>
+    </div>
+           <div class="EquifaxIgnite_filterContainer">
+    <div class="EquifaxIgnite_filterCategory">Créditos micro empresa</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="82574369218440d6a8ef16d21c1129ee" />
+            </div>
+           </div>
+       
+     
+       <h3>Bono independiente</h3>
+      <div class="EquifaxIgnite_filterContainer">
+      <div class="EquifaxIgnite_filterCategory">Beneficiario</div>
+           <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="ce5b362f0f864ce0a304298c4538a025" />
+            </div>
+          </div>
+     <div class="EquifaxIgnite_filterContainer">
+    <div class="EquifaxIgnite_filterCategory">Cobro bono</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="715e2662a5a14057a8660bf0ca1ee188" />
+            </div>
+          </div>
+    
+       <h3>AFP</h3>
+      <div class="EquifaxIgnite_filterContainer">
+      <div class="EquifaxIgnite_filterCategory">Retiro AFP - 6 meses</div>
+           <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="c8ea2cbe66b245ae9241cc4dd67400c7" />
+            </div>
+          </div>
+     <div class="EquifaxIgnite_filterContainer">
+    <div class="EquifaxIgnite_filterCategory">Retiro AFP - 12 meses</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="531b3f7c9d69431887683ebd228f8db1" />
+            </div>
+          </div>
+    
+       <h3>Consultas</h3>
+      <div class="EquifaxIgnite_filterContainer">
+      <h4>Consultas 1 mes</h4>
+      <div class="EquifaxIgnite_filterCategory">Indicador</div>
+           <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="34c94f5c3a864c84a6d14603d8317cd4" />
+            </div>
+          </div>
+     <div class="EquifaxIgnite_filterContainer">
+    <div class="EquifaxIgnite_filterCategory">Cantidad</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="f09419bd42f94267a5c20b7d0e8060ac" />
+            </div>
+          </div>
+     <div class="EquifaxIgnite_filterContainer">
+    <h4>Consultas 6 meses</h4>
+    <div class="EquifaxIgnite_filterCategory">Indicador</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="be0337e3bf1f41d5ad7208a5da83b2b5" />
+            </div>
+          </div>
+     <div class="EquifaxIgnite_filterContainer">
+    <div class="EquifaxIgnite_filterCategory">Cantidad</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="14ced0e1bdf248b282f182d1b3710519" />
+            </div>
+          </div>
+     <div class="EquifaxIgnite_filterContainer">
+    <h4>Consultas 12 meses</h4>
+    <div class="EquifaxIgnite_filterCategory">Indicador</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="6adc66748e464674966d758e28fef335" />
+            </div>
+          </div>
+     <div class="EquifaxIgnite_filterContainer">
+    <div class="EquifaxIgnite_filterCategory">Cantidad</div>
+            <div class="EquifaxIgnite_filterValue">
+    <SpotfireControl id="1749e1c6284141ec8fde0bf4ed46f235" />
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <!-- "CLASS: EquifaxIgnite-header" -->
+    </div>
+
+
+
+   
+    

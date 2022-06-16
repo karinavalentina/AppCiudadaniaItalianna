@@ -1,0 +1,211 @@
+[type="radio"]:not(:checked)+span, [type="radio"]:checked+span {
+    padding-left: -30px;
+    color: #070808;
+    
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
+    border: 2px solid #0a0c0c;
+    
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+    background-color: #070808;
+    
+}
+
+[type="radio"]+span:before, [type="radio"]+span:after {
+    left: 4px;
+    top: 0;
+    margin: 5px;
+    width: 14px;
+    height: 14px;
+    z-index: 0;
+    -webkit-transition: .28s ease;
+    transition: .28s ease;
+}
+
+.with-gap{
+    margin-left: 40px;
+}
+
+.waves-effect waves-light btn-small{
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    margin-right: 60px;
+    font-size:15px;
+    margin-top: 0 px;
+    background-color: black;    
+}
+
+caption{
+    background-color: rgba(23, 24, 24);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 60px;
+    font-size: 26px;
+    color: rgb(82, 80, 80);
+    
+    
+}
+
+.input-field {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 30px;
+    margin-left: 0px;
+}
+
+
+body{
+    background-image: url("https://i.pinimg.com/564x/82/9c/17/829c17b2a785b6ec68d1a57d2b69ebe2.jpg");
+    background-color: rgb(7, 6, 6);
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center center;
+   
+}
+
+
+#video_background {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+    overflow: hidden;
+    }
+    #video_pattern {
+    background:#fff;
+    position: fixed;
+    opacity: 0.8;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    }
+
+h1 {
+    text-align: center;
+    background-color: rgba(23, 24, 24);
+    margin-top: 1.5rem;
+    padding-top: 10px;
+    margin-bottom: 1rem;
+    color: rgb(82, 80, 80);
+    height: 90px;
+}
+td,th{  
+    background-color: rgb(176, 180, 180,0.7);
+    text-align: center; 
+    color: #070808;
+}
+
+form {
+    text-align: left;
+    background-color: rgb(251,255,255, 0.5);
+    
+}
+
+.Form {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: rgba(251,255,255,0.5);
+    margin-top: 62px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+    
+input{
+    margin-left: 10px;
+}
+
+
+input #Ingreso{
+    text-align: right;
+    padding-left: 20px;
+}
+
+button {
+    margin: 0px 6px 0px 0px;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: black;
+    text-align: center;
+    letter-spacing: .8px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+    border: none;  
+}
+
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+    height: 2.2rem;  
+}
+
+table{
+    margin-left: 10%;
+}
+
+#btnExportar{
+    margin-left: 45%;
+    margin-top: 2%;
+    height: 30px;
+    
+}
+
+#But{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    padding-bottom: 10%;
+
+}
+
+.input-field {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    margin-left: 1.9rem;
+    margin-right: 1.9rem;
+    color: black
+}
+
+.input-field>label{
+    color:black;
+}
+
+#Boton{
+    background-color: black;    
+}
+
+.BTExp{
+    background-color: rgba(251,255,255, 0.5);
+    margin-right: -10%;
+    margin-left: 10%;
+    height: 50px;
+}
+
+input:not([type])+label:after, input[type=text]:not(.browser-default)+label:after, input[type=password]:not(.browser-default)+label:after, input[type=email]:not(.browser-default)+label:after, input[type=url]:not(.browser-default)+label:after, input[type=time]:not(.browser-default)+label:after, input[type=date]:not(.browser-default)+label:after, input[type=datetime]:not(.browser-default)+label:after, input[type=datetime-local]:not(.browser-default)+label:after, input[type=tel]:not(.browser-default)+label:after, input[type=number]:not(.browser-default)+label:after, input[type=search]:not(.browser-default)+label:after, textarea.materialize-textarea+label:after, .select-wrapper+label:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    -webkit-transition: .2s opacity ease-out, .2s color ease-out;
+    transition: .2s opacity ease-out, .2s color ease-out;
+}
+
+
+
+
+
+
+
+
+
