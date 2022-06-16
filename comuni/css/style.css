@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
+
 [type="radio"]:not(:checked)+span, [type="radio"]:checked+span {
     padding-left: -30px;
     color: #070808;
@@ -35,18 +38,19 @@
     margin-right: 60px;
     font-size:15px;
     margin-top: 0 px;
-    background-color: black;    
+    background-color: black;   
+    text-transform: capitalize not working
+
 }
 
 caption{
-    background-color: rgba(23, 24, 24);
+    background-color: rgba(23, 24, 24,0.95);
     padding-bottom: 10px;
     padding-top: 10px;
     margin-top: 60px;
-    font-size: 26px;
-    color: rgb(82, 80, 80);
-    
-    
+    font-size: 36px;
+    color: rgb(229, 229, 226);
+    font-family:'Parisienne', cursive;
 }
 
 .input-field {
@@ -58,16 +62,16 @@ caption{
 
 
 body{
-    background-image: url("https://i.pinimg.com/564x/82/9c/17/829c17b2a785b6ec68d1a57d2b69ebe2.jpg");
+    background-image: url("../img/bustos.png");
     background-color: rgb(7, 6, 6);
-    background-size: cover;
-    background-repeat:no-repeat;
-    background-position: center center;
-   
+    /*background-repeat:no-repeat;*/
+    background-position: center;
+    background-size: 1000px 350px;
+    
 }
 
 
-#video_background {
+/*#video_background {
     position: fixed;
     bottom: 0px;
     right: 0px;
@@ -87,16 +91,18 @@ body{
     width: 100%;
     height: 100%;
     z-index: 1;
-    }
+    }*/
 
 h1 {
     text-align: center;
-    background-color: rgba(23, 24, 24);
-    margin-top: 1.5rem;
-    padding-top: 10px;
+    background-color: rgba(23, 24, 24,0.95);
+    margin-top: 1rem;
+    padding-top: 5px;
     margin-bottom: 1rem;
-    color: rgb(82, 80, 80);
+    color: rgb(229, 226, 226);
     height: 90px;
+    font-family:'Parisienne', cursive;
+    font-size: 90px;
 }
 td,th{  
     background-color: rgb(176, 180, 180,0.7);
@@ -106,8 +112,7 @@ td,th{
 
 form {
     text-align: left;
-    background-color: rgb(251,255,255, 0.5);
-    
+    background-color: rgb(251,255,255, 0.5);    
 }
 
 .Form {
@@ -130,8 +135,8 @@ input #Ingreso{
 }
 
 button {
-    margin: 0px 6px 0px 0px;
-    padding: 5px 10px;
+    margin: 0px 0px 0px 0px;
+    padding: 5px 15px;
     text-decoration: none;
     color: #fff;
     background-color: black;
@@ -152,10 +157,21 @@ table{
 }
 
 #btnExportar{
-    margin-left: 45%;
-    margin-top: 2%;
-    height: 30px;
-    
+    margin-left: 40%;
+    margin-top: 1%;
+    height: 75%;
+    font-family:'Parisienne', cursive;
+    font-size: 150%;   
+    border-radius: 30px;
+}
+
+#btnExportar:hover{
+    background: transparent; /*Fondo transparente*/
+    border: 2px solid rgb(8, 8, 8);
+    transition: all 700ms ease;
+    color: #fff;
+    background: rgba(23, 24, 24,0.95);
+    font-size: 160%;
 }
 
 #But{
@@ -163,7 +179,7 @@ table{
     margin-right: auto;
     width: 100px;
     padding-bottom: 10%;
-
+    font-size: 150%;
 }
 
 .input-field {
@@ -181,6 +197,7 @@ table{
 
 #Boton{
     background-color: black;    
+    border-radius: 30px;
 }
 
 .BTExp{
@@ -188,6 +205,7 @@ table{
     margin-right: -10%;
     margin-left: 10%;
     height: 50px;
+    
 }
 
 input:not([type])+label:after, input[type=text]:not(.browser-default)+label:after, input[type=password]:not(.browser-default)+label:after, input[type=email]:not(.browser-default)+label:after, input[type=url]:not(.browser-default)+label:after, input[type=time]:not(.browser-default)+label:after, input[type=date]:not(.browser-default)+label:after, input[type=datetime]:not(.browser-default)+label:after, input[type=datetime-local]:not(.browser-default)+label:after, input[type=tel]:not(.browser-default)+label:after, input[type=number]:not(.browser-default)+label:after, input[type=search]:not(.browser-default)+label:after, textarea.materialize-textarea+label:after, .select-wrapper+label:after {
@@ -201,8 +219,16 @@ input:not([type])+label:after, input[type=text]:not(.browser-default)+label:afte
     transition: .2s opacity ease-out, .2s color ease-out;
 }
 
+button:focus {
+    outline: none;
+    background-color: #373a3a;
+}
 
 
+button, input, optgroup, select, textarea {
+    font-family: 'Parisienne', cursive;
+    
+}
 
 
 
