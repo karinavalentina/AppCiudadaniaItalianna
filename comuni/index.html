@@ -2,120 +2,116 @@
 
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <title>Comuni</title>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <link rel="stylesheet" href="./css/style.css">
-        
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous"></script>
-        <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+<head>
+    <meta charset="utf-8">
+    <title>Comuni</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
         integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <script src="./JS/xlsx.full.min.js"></script>
-        <script src="./JS/FileSaver.min.js"></script>
-        <script src="./js/tableexport.min.js"></script>
+    <script src="./JS/xlsx.full.min.js"></script>
+    <script src="./JS/FileSaver.min.js"></script>
+    <script src="./js/tableexport.min.js"></script>
 
-        
-    
-    </head>
 
-    <body>
 
-        <!--<video autoplay="autoplay" loop="loop" id="video_background" preload="auto" muted="true">
+</head>
+
+<body>
+
+    <!--<video autoplay="autoplay" loop="loop" id="video_background" preload="auto" muted="true">
             <source src="https://media.istockphoto.com/videos/green-white-and-red-watercolor-ink-in-water-on-a-black-background-video-id1212711670" type="video/mp4" />-->
-        </video>
+    </video>
 
-            
-        <h1>Comunas</h1>
 
-        <div class="row">
-            <div class="col l3 offset-l1 s10 offset-s1">
-                <div>
-                    <form id="Form"> 
-                        <div class="Form">
-                            <br>
-                            <Span class = "input-field">Acepta digitales:</Span>
-                            <label name="TipoTrans">
-                                <input id="Si" value = "Si" class="with-gap" name="TipoTrans" type="radio" checked/>
-                                <span id="Si">Si</span>
-                            </label>
-                                
-                            <label name="TipoTrans">
-                                <input value = "No" class="with-gap" name="TipoTrans" type="radio" checked/>
-                                <span>No</span>
-                            </label>            
-                        </div>
-                    
-                        <div class="input-field">
-                            <input required id="Descripcion" type="text" class="validate" name = "Descripcion">
-                            <label for="Descripcion">Descripcion</label>
-                        </div>
+    <h1>Comunas</h1>
 
-                        <div class="input-field " name= "Monto">
-                            <input required id="Monto" type="number" class="validate" name= "Monto">
-                            <label for="Monto">Vencimiento de las actas (meses)</label>
-                        </div>
-                    
-                        <label for = "Categoria" class= "input-field">Comuni</label>
-                        <div class="input-field ">
-                            <select required id = "Categoria" class="js-example-basic-single" name="Categoria"></select>
-                        </div>
+    <div class="row">
+        <div class="col l3 offset-l1 s10 offset-s1">
+            <div>
+                <form id="Form">
+                    <div class="Form">
                         <br>
-                    
-                        <div id = "But">
-                            <button class="BTExp" id="Boton">Añadir
+                        <Span class="input-field">Acepta digitales:</Span>
+                        <label name="TipoTrans">
+                            <input id="Si" value="Si" class="with-gap" name="TipoTrans" type="radio" checked />
+                            <span id="Si">Si</span>
+                        </label>
+
+                        <label name="TipoTrans">
+                            <input value="No" class="with-gap" name="TipoTrans" type="radio" checked />
+                            <span>No</span>
+                        </label>
+                    </div>
+
+                    <div class="input-field">
+                        <input required id="Descripcion" type="text" class="validate" name="Descripcion">
+                        <label for="Descripcion">Descripcion</label>
+                    </div>
+
+                    <div class="input-field " name="Monto">
+                        <input required id="Monto" type="number" class="validate" name="Monto">
+                        <label for="Monto">Vencimiento de las actas (meses)</label>
+                    </div>
+
+                    <label for="Categoria" class="input-field">Comuni</label>
+                    <div class="input-field ">
+                        <select required id="Categoria" class="js-example-basic-single" name="Categoria"></select>
+                    </div>
+                    <br>
+
+                    <div id="But">
+                        <button class="BTExp" id="Boton">Añadir
                             <i class="material-icons right"></i>
-                            </button>
-                        </div>
+                        </button>
+                    </div>
 
-                    </form>
-                </div>
-            </div>
-
-
-            <div class="col l5 offset-l1 s10 "> 
-            
-                <table id = "tabla" class="highlight">
-                    <caption>Datos Comuni</caption>
-                    <tr>
-                        <th>
-                            Digitales
-                        </th>
-                        <th>
-                            Descripcion
-                        </th>
-                        
-                        <th>
-                            Venc Actas
-                        </th>
-                        <th>
-                            Comuni
-                        </th>
-                        <th>
-                            Eliminar
-                        </th>
-                    </tr>        
-                </table>
-                <div class="BTExp">
-                    <button id="btnExportar">Exportar</button>
-                    <script src="./JS/script2.js"></script>
-                </div>
+                </form>
             </div>
         </div>
 
 
-        <script src= "./JS/script.js"> </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <div class="col l5 offset-l1 s10 ">
 
-    </body>
+            <table id="tabla" class="highlight">
+                <caption>Datos Comuni</caption>
+                <tr>
+                    <th>
+                        Digitales
+                    </th>
+                    <th>
+                        Descripcion
+                    </th>
+
+                    <th>
+                        Venc Actas
+                    </th>
+                    <th>
+                        Comuni
+                    </th>
+                    <th>
+                        Eliminar
+                    </th>
+                </tr>
+            </table>
+            <div class="BTExp">
+                <button id="btnExportar">Exportar</button>
+                <script src="./JS/script2.js"></script>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./JS/script.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
 
 </html>
-
-
