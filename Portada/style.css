@@ -62,6 +62,12 @@
     
 }
 
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 
 @media(max-width:768px){
     .contenido .info h1{
